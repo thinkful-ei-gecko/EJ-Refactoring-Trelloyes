@@ -1,21 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import List from './List';
 import renderer from 'react-test-renderer';
-import List from './List.js';
 
-describe('<List />', () => {
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
+describe('test list component', () => {
+  it('should render without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(
+    <List key={2} 
+      header='header string' 
+      cards={[{id: 1, title: 'title 1', content: 'content 1'},
+      {id: 2, title: 'title 2', content: 'content 2'}]} 
+    />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 
-        ReactDOM.render(<List header='Trelloyes' cards={[{id: 'a', title: 'test snapshot', content: 'content' }, {id: 'b', title: 'test snapshot 2', content: 'more content'}]} />, div)
-
-        ReactDOM.unmountComponentAtNode(div);
-    });
-});
-
-describe('<List />', () => {
-    it('renders UI correctly', () => {
-        const tree = renderer.create(<List header="test header" cards={[{id: 'a', title: 'test snapshot', content: 'content' }, {id: 'b', title: 'test snapshot 2', content: 'more content'}]} />).toJSON();
-        expect(tree).toMatchSnapshot();
-    })
+  it('should match snapshot', () => {
+    const tree = renderer
+    .create(
+    <List key={2} 
+      header='header string' 
+      cards={[{id: 1, title: 'title 1', content: 'content 1'},
+      {id: 2, title: 'title 2', content: 'content 2'}]} 
+    />)
+    .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 })
