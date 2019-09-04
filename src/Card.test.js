@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as renderer from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 import Card from './Card.js';
 
 

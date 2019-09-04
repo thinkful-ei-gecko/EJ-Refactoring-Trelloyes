@@ -16,8 +16,7 @@ describe('test list component', () => {
   });
 
   it('should match snapshot', () => {
-    const tree = renderer
-    .create(
+    const tree = renderer.create(
     <List key={2} 
       header='header string' 
       cards={[{id: 1, title: 'title 1', content: 'content 1'},
